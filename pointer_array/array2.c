@@ -39,5 +39,6 @@ int main(void)
         printf("arr5[%d]=%f;\n", i, arr5[i]);
     }
 
+
     return 0;
 }
