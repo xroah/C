@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/images/notepad.png</file>
+        <file>resources/images/new.png</file>
+    </qresource>
+</RCC>
