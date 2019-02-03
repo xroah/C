@@ -1,5 +1,6 @@
 #include "notepad.h"
 #include "ui_notepad.h"
+#include <QMessageBox>
 
 Notepad::Notepad(QWidget *parent) :
     QMainWindow(parent),
@@ -7,12 +8,24 @@ Notepad::Notepad(QWidget *parent) :
 {
     ui->setupUi(this);
     setCentralWidget(ui->textEdit);
-//    ui->toolBar->setMovable(false);
+    //    ui->toolBar->setMovable(false);
 }
 
 void Notepad::on_actionNew_triggered()
 {
-    ui->textEdit->toPlainText();
+    QString text = ui->textEdit->toPlainText();
+    if (text.size()) {
+        QMessageBox::StandardButton btn = QMessageBox::question(
+                    this,
+                    "消息",
+                    "未保存",
+                    QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No),
+                    QMessageBox::Yes
+                    );
+        if (btn == QMessageBox::No) {
+            ui->textEdit->clear();
+        }
+    }
 }
 
 void Notepad::on_actionOpen_triggered()
